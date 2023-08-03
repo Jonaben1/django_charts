@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wealth by Gender</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Wealth by Gender</h1>
+    <canvas id="wealthChart" width="400" height="400"></canvas>
+<!--    <script>
+        var ctx = document.getElementById('wealthChart').getContext('2d');
+        var wealthChart = new Chart(ctx, {
+            type: 'bar',
+            data: {{ data|safe }},
+            options: {
+                responsive: false,
+                maintainAspectRation: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Pie chart-->
+    <script>
+        var ctx = document.getElementById('wealthChart').getContext('2d');
+        var wealthChart = new Chart(ctx, {
+            type: 'pie',
+            data: {{ data|safe }},
+            options: {
+                responsive: false,
+                maintainAspectRatio: false
+            }
+        });
+  </script>
+</body>
+</html>
+

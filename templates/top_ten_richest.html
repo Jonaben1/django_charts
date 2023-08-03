@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Top Richest Men</h1>
+    <canvas id="myChart" width=400" height="400"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ chart_data|safe }}.map(item => item.name),
+        datasets: [{
+            label: 'Net Worth',
+            data: {{ chart_data|safe }}.map(item => item.net_worth),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+<!--Uncomment for pie chart-->
+
+<!--<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ chart_data|safe }}.map(item => item.name),
+        datasets: [{
+            label: 'Net Worth',
+            data: {{ chart_data|safe }}.map(item => item.net_worth),
+            backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(153, 102, 255)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)'
+            ],
+            hoverOffset: 4
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Top Ten Richest People'
+        },
+        maintainAspectRation: false,
+        responsive: false,
+    }
+});
+</script> -->
+</body>
+</html>
+
